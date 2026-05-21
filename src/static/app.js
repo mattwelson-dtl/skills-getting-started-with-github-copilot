@@ -13,13 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
       .replaceAll("'", "&#39;");
   }
 
+  let messageTimeoutId;
+
   function showMessage(text, type) {
     messageDiv.textContent = text;
     messageDiv.classList.remove("success", "error");
     messageDiv.classList.add("message", type);
     messageDiv.classList.remove("hidden");
 
-    setTimeout(() => {
+    if (messageTimeoutId) {
+      clearTimeout(messageTimeoutId);
+    }
+
+    messageTimeoutId = setTimeout(() => {
       messageDiv.classList.add("hidden");
     }, 5000);
   }
