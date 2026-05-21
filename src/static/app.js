@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showMessage(text, type) {
     messageDiv.textContent = text;
-    messageDiv.className = type;
+    messageDiv.classList.remove("success", "error");
+    messageDiv.classList.add("message", type);
     messageDiv.classList.remove("hidden");
 
     setTimeout(() => {
